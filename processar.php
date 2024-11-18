@@ -1,0 +1,19 @@
+<?php
+header('content-Type: application/json');
+
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $dados = json_decode(file_put_contents("php://input"));
+
+    $a = dados-> a;
+    $b = dados-> b;
+    $c = dados-> c;
+
+    $delta = ($b * $b)  - (4* $a * $c);
+
+    echo json_encode(['delta'=> $delta]);
+
+}else{
+    echo json_encode(['ERRO' => 'Método não suportado. Use p método POST']);
+}
+
+?>
